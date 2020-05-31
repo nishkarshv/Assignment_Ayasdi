@@ -1,0 +1,23 @@
+Assignment Details:-
+1) Produce a python module (ayasdi_python_code.py) which does the following:
+
+2) Create a tab-delimited file (ayasdi_assignment.csv) containing 20 columns and a million rows with the following characteristics:
+
+    - Column 1 (labeled as col1 is the index column where the values are 1 to 1 million)
+    - The next 9 columns (2 to 10) are labelled col2_x ... col10_x where each contains random values and 'x' is the mean mentioned in the next sentence. Each column has random data generated from a gaussian distribution at different means and variances. Additionally, each of these columns have 10% nulls.
+    - Columns 11 to 19 are labelled as col11...col19, where each column has random strings selected from the English Dictionary. 10% nulls in this column as well.
+    - Column 20 has random dates selected between January 1, 2014 to December 31, 2014. No nulls in this column.
+ 
+
+3) Once this dataset has been created, load it into a single table in a sqlite database (ayasdi_assignment.db).
+
+Code Implementation:-
+    Code has following structure:-
+    ayasdi_python_code.py - executable file
+    create_csv.py - To create csv
+    db_operations.py - Database operations (create, insert, select)
+    mapping_random_data.py - Create mapping dictionary for each column
+    random_generation.py - Create random numbers, english words and dates.
+
+Execution:-
+python +x ayasdi_python_code.py
