@@ -21,3 +21,11 @@ Code Implementation:-
 
 Execution:-
 python +x ayasdi_python_code.py
+
+Future Modifications:-
+Looking at the complete run of program it will take enormous amount of memory and time, to fix this we can implement this same code using Multiprocessing.
+Idea is adding a wrapper over the main file which will take multiple batches and run through multiple threads of core by keeping n=5000 instead of n= 1million.
+So, this enhancement will take use of all cores of cpu at same time and batch processing will happen let's say for 50 threads - 50 *5000 = 250,000 that means another 4 times that wrapper will run and complete it's job.
+This multithreaded environment will help achieving our task quickly.
+Another thing, is required while multithreading is going on we have to add data to both csv and db simultaneously that is nth data added to csv and n-1th data added to database. Concurrency can play huge role in reducing both time and memory.
+
