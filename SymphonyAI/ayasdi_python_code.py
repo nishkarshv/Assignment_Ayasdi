@@ -5,7 +5,10 @@ from create_csv import Create_Csv
 
 class Ayasdi:
     def main(self):
-        n = 1000
+        '''
+        Main function to run the complete task
+        '''
+        n = 1000000  
         csvfilename = 'ayasdi_assignment.csv'
         start_date = 'January 1, 2014'
         end_date = 'December 31, 2014' 
