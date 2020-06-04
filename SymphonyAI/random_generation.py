@@ -31,6 +31,16 @@ class RandomGeneration:
         words = long_txt.splitlines()
         return words
     
+    def read_english_words_txt(self):
+        '''
+        Get English words form the free bsd url
+        '''
+        englist = []
+        with open("english_words.txt", "r") as eng:
+            for line in eng:
+                englist.append(line.strip('\n'))
+        return englist
+            
       
     def gen_random_words(self, wordslist):
         '''
@@ -48,14 +58,26 @@ class RandomGeneration:
             randomlist.append(self.gen_random_words(wordslist))
         return randomlist
     
-    def gen_random_numbers_list(self, n, start, end):
+    def gen_random_numbers_list(self, n, start, end, nullpercent):
         '''
         generate list of random numbers
         '''
         randomlist = []
-        for i in range(n):
+        nullnumberlist = []
+        null_n = (n*nullpercent)//100
+        for i in range(null_n):
+            nullnumberlist.append(None)
+        random_n = (n*(100-nullpercent))//100
+        
+        for i in range(random_n):
             randomlist.append(self.gen_random_numbers(start, end))
-        return randomlist
+        
+        mean = self.mean(randomlist)
+        randomlistcombined = randomlist + nullnumberlist
+        
+        random.shuffle(randomlistcombined)
+        
+        return randomlistcombined, mean
      
     def gen_random_dates_list(self, n, start, end):
         '''
@@ -89,11 +111,17 @@ class RandomGeneration:
         randomdate = rand_date.strftime('%B %d, %Y')
         return randomdate
     
-    def gen_mean(self, randomlist):
+    def mean(self, numbers):
         '''
         Mean from list of numbers
         '''
-        return sum(randomlist)/len(randomlist)
+        return sum(numbers) / len(numbers)
+    
+    def gen_mean(self, randomlist):
+        '''
+        generate mean by removing None from list
+        '''
+        return self.mean(list(filter(None.__ne__, randomlist)))
     
 if __name__ == '__main__':
     testmod(verbose=True)
